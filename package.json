@@ -1,35 +1,32 @@
 {
-  "name": "caveman-installer",
+  "name": "pi-caveman",
   "version": "0.1.0",
-  "description": "Caveman installer — detects your AI coding agents and installs caveman for each one.",
+  "private": false,
+  "description": "Pi-native caveman runtime package.",
+  "keywords": ["pi-package", "pi", "extension", "caveman"],
   "license": "MIT",
-  "author": "Julius Brussee",
-  "homepage": "https://github.com/JuliusBrussee/caveman",
+  "author": "Julius Brussee and contributors; Pi fork by Osmar Gomez",
+  "homepage": "https://github.com/osmargm1202/pi-caveman",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JuliusBrussee/caveman.git"
+    "url": "git+https://github.com/osmargm1202/pi-caveman.git"
   },
   "bugs": {
-    "url": "https://github.com/JuliusBrussee/caveman/issues"
+    "url": "https://github.com/osmargm1202/pi-caveman/issues"
   },
-  "bin": {
-    "caveman": "./bin/install.js"
+  "files": ["extensions", "src", "README.md", "LICENSE"],
+  "pi": {
+    "extensions": ["./extensions/caveman.ts"]
   },
-  "engines": {
-    "node": ">=18"
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": { "optional": true },
+    "@earendil-works/pi-tui": { "optional": true }
   },
   "scripts": {
-    "test": "node --test tests/installer/*.test.mjs"
-  },
-  "files": [
-    "bin/",
-    "src/",
-    "agents/",
-    "skills/",
-    "plugins/",
-    "commands/",
-    "dist/caveman.skill",
-    "README.md",
-    "LICENSE"
-  ]
+    "test": "bun test"
+  }
 }
