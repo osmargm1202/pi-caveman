@@ -4,9 +4,52 @@ Pi-native fork/package of [JuliusBrussee/caveman](https://github.com/JuliusBruss
 
 ## Install
 
+Standalone install:
+
 ```bash
 pi install git:github.com/osmargm1202/pi-caveman
 ```
+
+Recommended ORGM stack install:
+
+```bash
+for pkg in pi-mem pi-caveman pi-harness pi-footer; do
+  pi install git:github.com/osmargm1202/$pkg
+done
+```
+
+## ORGM Pi stack
+
+This package is part of the ORGM Pi extension stack.
+
+Packages:
+
+- `pi-mem`: local memory/context index provider.
+- `pi-caveman`: caveman runtime and shared state events.
+- `pi-harness`: ORGM commands, config, title, ask/todo/banner bridge.
+- `pi-footer`: Zentui-based editor/footer UI that displays ORGM status.
+
+## Coupled integrations
+
+Produces:
+
+- Caveman prompt/runtime behavior.
+- `/caveman`, `/caveman-commit`, `/caveman-review`, `/caveman-compress`, `/caveman-stats` commands.
+- Shared state session entry/event: `pi-caveman:state`.
+
+Consumes:
+
+- Pi lifecycle/input events.
+- User config at `~/.pi/agent/pi-caveman/config.json`.
+
+Hard dependencies:
+
+- None. `pi-caveman` can load alone.
+
+Soft dependencies:
+
+- `pi-footer` displays `pi-caveman:state` as `caveman:<level>`.
+- `pi-harness` can observe caveman state for ORGM UI/status integrations.
 
 Package manifest exposes only:
 
